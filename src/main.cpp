@@ -29,7 +29,6 @@ void setup()
   wifiConnect();
   client.setServer(mqttServer, port);
   client.setCallback(callback);
-
   // Setup pin mode
   pinMode(doorSensor, INPUT);
 }
