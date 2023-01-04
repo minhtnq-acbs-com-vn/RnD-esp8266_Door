@@ -14,6 +14,7 @@ void setup()
   setupMQTTConnection();
   // Setup pin mode
   pinMode(doorSensor, INPUT);
+  pinMode(pirSensor, INPUT);
 }
 
 void loop()

@@ -12,5 +12,7 @@ int readState(int pin);
 void publishFlag(String flag);
 void publishConfirm();
 void responseState();
+void responsePIRState();
+void publishPIRConfirm();
 
 #endif

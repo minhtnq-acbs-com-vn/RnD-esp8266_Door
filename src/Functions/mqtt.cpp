@@ -2,8 +2,8 @@
 
 void setupMQTTConnection()
 {
-    client.setServer(mqttServer, port);
-    client.setCallback(callback);
+  client.setServer(mqttServer, port);
+  client.setCallback(callback);
 }
 
 void callback(char *topic, byte *message, unsigned int length)
@@ -23,6 +23,11 @@ void callback(char *topic, byte *message, unsigned int length)
   {
     responseState();
     publishConfirm();
+  }
+  else if (strMsg == serverRequestPIR)
+  {
+    responsePIRState();
+    publishPIRConfirm();
   }
 }
 

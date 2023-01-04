@@ -21,7 +21,21 @@ void responseState()
 {
   int state = readState(doorSensor);
   if (state == 1)
-    publishFlag(lockedState);
+    publishFlag("1");
   else if (state == 0)
-    publishFlag(unlockedState);
+    publishFlag("0");
+}
+
+void responsePIRState()
+{
+  int state = readState(pirSensor);
+  if (state == 1)
+    publishFlag("1");
+  else if (state == 0)
+    publishFlag("0");
+}
+
+void publishPIRConfirm()
+{
+  client.publish(topicDoorACK, devicePIRConfirmed.c_str());
 }

@@ -5,8 +5,8 @@
 
 // Setup string
 inline String deviceConfirmed = "deviceDoorConfirmed";
+inline String devicePIRConfirmed = "devicePIRConfirmed";
 inline String serverRequest = "requestDoorStatus";
-inline String lockedState = "DoorLocked";
-inline String unlockedState = "DoorUnlocked";
+inline String serverRequestPIR = "requestPIRStatus";
 
 #endif
