@@ -2,33 +2,30 @@
 
 void setupMQTTConnection()
 {
-  client.setServer(mqttServer, port);
+  secureClient.setInsecure();
+  client.setServer(mqttServer, mqttPort);
   client.setCallback(callback);
 }
 
 void callback(char *topic, byte *message, unsigned int length)
 {
-  Serial.println(topic);
-
   String strMsg;
-
   for (uint32_t i = 0; i < length; i++)
   {
     strMsg += (char)message[i];
   }
-
   Serial.println(strMsg);
-  //***Insert code here to control other devices***
-  if (strMsg == serverRequest)
-  {
-    responseState();
-    publishConfirm();
-  }
-  else if (strMsg == serverRequestPIR)
-  {
+  requestFilter(strMsg);
+}
+
+void requestFilter(String request)
+{
+  if (request == serverRequestDoor)
+    responseDoorState();
+  else if (request == serverRequestPIR)
     responsePIRState();
-    publishPIRConfirm();
-  }
+  else if (request == requestAPI)
+    setupDeviceConfig();
 }
 
 void mqttReconnect()

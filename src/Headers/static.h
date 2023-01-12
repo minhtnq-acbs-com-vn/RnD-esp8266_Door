@@ -9,9 +9,9 @@
 #include "pin.h"
 
 int readState(int pin);
-void publishFlag(String flag);
-void publishConfirm();
-void responseState();
+void publishResponse(String flag);
+void publishDoorConfirm();
+void responseDoorState();
 void responsePIRState();
 void publishPIRConfirm();
 

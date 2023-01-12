@@ -11,6 +11,9 @@ void setup()
 
   // Init wifi and mqtt
   wifiConnect();
+  delay(500);
+  setupDeviceConfig();
+  delay(500);
   setupMQTTConnection();
   // Setup pin mode
   pinMode(doorSensor, INPUT);
