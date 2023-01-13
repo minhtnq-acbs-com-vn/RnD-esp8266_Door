@@ -12,9 +12,11 @@ void setup()
   // Init wifi and mqtt
   wifiConnect();
   delay(500);
-  setupDeviceConfig();
-  delay(500);
   setupMQTTConnection();
+  delay(500);
+  
+  sentDeviceInfo();
+  // getDeviceInfo();
   // Setup pin mode
   pinMode(doorSensor, INPUT);
   pinMode(pirSensor, INPUT);
@@ -22,10 +24,10 @@ void setup()
 
 void loop()
 {
-  if (!client.connected())
-  {
-    mqttReconnect();
-  }
-  client.loop();
-  wifiCheck();
+  // if (!client.connected())
+  // {
+  //   mqttReconnect();
+  // }
+  // client.loop();
+  // wifiCheck();
 }

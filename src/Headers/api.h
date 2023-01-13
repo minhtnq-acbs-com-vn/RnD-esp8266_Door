@@ -6,7 +6,8 @@
 #include "pin.h"
 #include "topic.h"
 
-String responseAPI();
+void sentDeviceInfo();
+String getDeviceInfo();
 void setupDeviceConfig();
 void setupMQTTConfig(DynamicJsonDocument doc);
 void setupPacketConfig(DynamicJsonDocument doc);
