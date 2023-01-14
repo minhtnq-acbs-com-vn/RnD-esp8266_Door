@@ -3,7 +3,7 @@
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
-// #include "topic.h"
+#include "pin.h"
 
 // Setup string
 inline String deviceDoorConfirmed = "deviceDoorConfirmed";
@@ -19,6 +19,7 @@ inline String topicDoorServerString = "DoornPIR/room1/server";
 inline String topic[] = {topicDoorDeviceString, topicDoorACKString, topicDoorServerString};
 inline String ack[] = {deviceDoorConfirmed, devicePIRConfirmed};
 inline String request[] = {serverRequestDoor, serverRequestPIR, requestAPI};
+inline int pin[] = {doorSensor, pirSensor};
 
 const String apiHost = "https://perfect-cow-14.telebit.io/api/v1/device";
 const String roomName = "room1";

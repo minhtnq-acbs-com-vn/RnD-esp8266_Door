@@ -20,6 +20,12 @@ String packToJson()
     {
         dataRequest.add(element);
     }
+    JsonArray dataPin = doc.createNestedArray("pin");
+    for (auto &element : pin)
+    {
+        dataPin.add(element);
+    }
+
     String json;
     serializeJson(doc, json);
     return json;
