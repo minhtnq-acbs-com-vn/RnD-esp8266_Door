@@ -1,3 +1,6 @@
+#ifndef API_H
+#define API_H
+
 #include <ESP8266HTTPClient.h>
 #include <ArduinoJson.h>
 #include "client.h"
@@ -6,11 +9,17 @@
 #include "pin.h"
 #include "topic.h"
 
+inline const String apiHost = "https://perfect-cow-14.telebit.io/api/v1/device";
+inline const String roomName = "room1";
+inline const String deviceModule = "DoornPIR";
+inline const String deviceName = String(ESP.getChipId());
+inline const String apiQuery = apiHost + "/" + deviceName + ":" + roomName + ":" + deviceModule;
+
 void sentDeviceInfo();
 String getDeviceInfo();
 void setupDeviceConfig();
-void setupMQTTConfig(DynamicJsonDocument doc);
 void setupPacketConfig(DynamicJsonDocument doc);
 void setupPin(DynamicJsonDocument doc);
-void setupTopic(DynamicJsonDocument doc);
 void printChanges(String option);
+
+#endif
