@@ -6,5 +6,6 @@ inline int doorSensor = 2;
 inline int pirSensor = 3;
 
 inline int pin[] = {doorSensor, pirSensor};
+inline String pinKey[] = {"door", "pir"};
 
 #endif

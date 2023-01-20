@@ -14,9 +14,10 @@ void setup()
   delay(500);
   setupMQTTConnection();
   delay(500);
-  
+
   sentDeviceInfo();
-  // getDeviceInfo();
+  delay(500);
+  setupDeviceConfig();
   // Setup pin mode
   pinMode(doorSensor, INPUT);
   pinMode(pirSensor, INPUT);

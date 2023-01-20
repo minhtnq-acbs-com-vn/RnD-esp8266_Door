@@ -6,11 +6,23 @@ void sentDeviceInfo()
     String payload = "";
     http.begin(secureClient, apiHost);
     String json = packToJson();
-    Serial.println(json);
     http.addHeader("Content-Type", "application/json");
     int httpCode = http.POST(json);
     Serial.println(http.errorToString(httpCode));
-    // // Check the returning code
+    while (httpCode != 200)
+    {
+        http.end();
+        delay(10000);
+        http.begin(secureClient, apiHost);
+        String json = packToJson();
+        http.addHeader("Content-Type", "application/json");
+        int httpCode = http.POST(json);
+        Serial.println(http.errorToString(httpCode));
+        if (httpCode == 200)
+            break;
+    }
+
+    // Check the returning code
     payload = http.getString(); // Get the request response payload
     Serial.println(payload);    // Print the response payload
 
@@ -37,7 +49,6 @@ String getDeviceInfo()
     }
     // Check the returning code
     payload = http.getString(); // Get the request response payload
-    Serial.println(payload);    // Print the response payload
 
     http.end();
     return payload;
@@ -59,36 +70,36 @@ void setupDeviceConfig()
 
 void setupPacketConfig(DynamicJsonDocument doc)
 {
-    printChanges("packet");
-    deviceDoorConfirmed = doc["deviceDoorConfirmed"].as<String>();
-    devicePIRConfirmed = doc["devicePIRConfirmed"].as<String>();
-    serverRequestDoor = doc["serverRequestDoor"].as<String>();
-    serverRequestPIR = doc["serverRequestPIR"].as<String>();
-    requestAPI = doc["requestAPI"].as<String>();
-    printChanges("packet");
+    deviceDoorConfirmed = doc["ack"]["door"].as<String>();
+    devicePIRConfirmed = doc["ack"]["pir"].as<String>();
+    serverRequestDoor = doc["request"]["door"].as<String>();
+    serverRequestPIR = doc["request"]["pir"].as<String>();
+    requestAPI = doc["request"]["api"].as<String>();
 }
 
 void setupPin(DynamicJsonDocument doc)
 {
-    printChanges("pin");
-    doorSensor = doc["doorSensor"].as<int>();
-    pirSensor = doc["pirSensor"].as<int>();
-    printChanges("pin");
+    doorSensor = doc["pin"]["door"].as<int>();
+    pirSensor = doc["pin"]["pir"].as<int>();
 }
 
 void printChanges(String option)
 {
     if (option == "packet")
     {
+        Serial.println("-----OLD-----");
         Serial.println(deviceDoorConfirmed);
         Serial.println(devicePIRConfirmed);
         Serial.println(serverRequestDoor);
         Serial.println(serverRequestPIR);
         Serial.println(requestAPI);
+        Serial.println("-----NEW-----");
     }
     else if (option == "pin")
     {
+        Serial.println("-----OLD-----");
         Serial.println(doorSensor);
         Serial.println(pirSensor);
+        Serial.println("-----NEW-----");
     }
 }

@@ -6,25 +6,37 @@ String packToJson()
     doc["deviceName"] = deviceName;
     doc["roomName"] = roomName;
     doc["deviceModule"] = deviceModule;
-    JsonArray dataTopic = doc.createNestedArray("topic");
-    for (auto &element : topic)
+
+    int pos = 0;
+    JsonObject topicObj = doc.createNestedObject("topic");
+    for (auto &elementKey : topicKey)
     {
-        dataTopic.add(element);
+        topicObj[elementKey] = topic[pos];
+        pos++;
     }
-    JsonArray dataACK = doc.createNestedArray("ack");
-    for (auto &element : ack)
+
+    pos = 0;
+    JsonObject ackObj = doc.createNestedObject("ack");
+    for (auto &elementKey : ackKey)
     {
-        dataACK.add(element);
+        ackObj[elementKey] = ack[pos];
+        pos++;
     }
-    JsonArray dataRequest = doc.createNestedArray("request");
-    for (auto &element : request)
+
+    pos = 0;
+    JsonObject requestObj = doc.createNestedObject("request");
+    for (auto &elementKey : requestKey)
     {
-        dataRequest.add(element);
+        requestObj[elementKey] = request[pos];
+        pos++;
     }
-    JsonArray dataPin = doc.createNestedArray("pin");
-    for (auto &element : pin)
+
+    pos = 0;
+    JsonObject pinObj = doc.createNestedObject("pin");
+    for (auto &elementKey : pinKey)
     {
-        dataPin.add(element);
+        pinObj[elementKey] = pin[pos];
+        pos++;
     }
 
     String json;

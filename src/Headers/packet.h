@@ -14,7 +14,9 @@ inline String serverRequestPIR = "requestPIRStatus";
 inline String requestAPI = "requestAPI";
 
 inline String ack[] = {deviceDoorConfirmed, devicePIRConfirmed};
+inline String ackKey[] = {"door", "pir"};
 inline String request[] = {serverRequestDoor, serverRequestPIR, requestAPI};
+inline String requestKey[] = {"door", "pir", "api"};
 
 String packToJson();
 

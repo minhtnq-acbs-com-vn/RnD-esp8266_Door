@@ -11,5 +11,6 @@ inline const char *topicDoorACK = "DoornPIR/room1/ACK";
 inline const char *topicDoorServer = "DoornPIR/room1/server";
 
 inline String topic[] = {topicDoorDevice, topicDoorACK, topicDoorServer};
+inline String topicKey[] = {"subscribe", "ack", "publish"};
 
 #endif
