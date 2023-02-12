@@ -6,6 +6,7 @@ void sentDeviceInfo()
     String payload = "";
     http.begin(secureClient, apiHost);
     String json = packToJson();
+    Serial.println(json);
     http.addHeader("Content-Type", "application/json");
     int httpCode = http.POST(json);
     Serial.println(http.errorToString(httpCode));
