@@ -85,22 +85,18 @@ void setupPin(DynamicJsonDocument doc)
 
 void printChanges(String option)
 {
-    if (option == "packet")
+
+    for (auto &element : ack)
     {
-        for (auto &element : ack)
-        {
-            Serial.println(element);
-        }
-        for (auto &element : request)
-        {
-            Serial.println(element);
-        }
+        Serial.println(element);
     }
-    if (option == "pin")
+    for (auto &element : request)
     {
-        for (auto &element : pin)
-        {
-            Serial.println(element);
-        }
+        Serial.println(element);
+    }
+
+    for (auto &element : pin)
+    {
+        Serial.println(element);
     }
 }
