@@ -1,8 +1,6 @@
 #ifndef TOPIC_H
 #define TOPIC_H
 
-#include "api.h"
-
 // Setup topic
 // From device
 inline const char *topicDoorDevice = "DoornPIR/room1";

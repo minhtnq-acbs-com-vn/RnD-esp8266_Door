@@ -25,10 +25,13 @@ void setup()
 
 void loop()
 {
-  // if (!client.connected())
-  // {
-  //   mqttReconnect();
-  // }
-  // client.loop();
-  // wifiCheck();
+  int value = digitalRead(pirSensor);
+  Serial.println(value);
+  delay(500);
+  if (!client.connected())
+  {
+    mqttReconnect();
+  }
+  client.loop();
+  wifiCheck();
 }

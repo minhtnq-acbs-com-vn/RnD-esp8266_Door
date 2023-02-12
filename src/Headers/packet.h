@@ -5,6 +5,7 @@
 #include <ArduinoJson.h>
 #include "pin.h"
 #include "topic.h"
+#include "api.h"
 
 // Setup string
 inline String deviceDoorConfirmed = "deviceDoorConfirmed";

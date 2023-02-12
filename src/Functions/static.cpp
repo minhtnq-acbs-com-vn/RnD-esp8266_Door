@@ -22,7 +22,7 @@ void responseDoorState()
   int state = readState(doorSensor);
   if (state == 1)
     publishResponse("1");
-  else if (state == 0)
+  if (state == 0)
     publishResponse("0");
   publishDoorConfirm();
 }
@@ -32,7 +32,7 @@ void responsePIRState()
   int state = readState(pirSensor);
   if (state == 1)
     publishResponse("1");
-  else if (state == 0)
+  if (state == 0)
     publishResponse("0");
   publishPIRConfirm();
 }

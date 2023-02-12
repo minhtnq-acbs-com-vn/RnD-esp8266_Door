@@ -87,19 +87,20 @@ void printChanges(String option)
 {
     if (option == "packet")
     {
-        Serial.println("-----OLD-----");
-        Serial.println(deviceDoorConfirmed);
-        Serial.println(devicePIRConfirmed);
-        Serial.println(serverRequestDoor);
-        Serial.println(serverRequestPIR);
-        Serial.println(requestAPI);
-        Serial.println("-----NEW-----");
+        for (auto &element : ack)
+        {
+            Serial.println(element);
+        }
+        for (auto &element : request)
+        {
+            Serial.println(element);
+        }
     }
-    else if (option == "pin")
+    if (option == "pin")
     {
-        Serial.println("-----OLD-----");
-        Serial.println(doorSensor);
-        Serial.println(pirSensor);
-        Serial.println("-----NEW-----");
+        for (auto &element : pin)
+        {
+            Serial.println(element);
+        }
     }
 }

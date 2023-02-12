@@ -22,9 +22,9 @@ void requestFilter(String request)
 {
   if (request == serverRequestDoor)
     responseDoorState();
-  else if (request == serverRequestPIR)
+  if (request == serverRequestPIR)
     responsePIRState();
-  else if (request == requestAPI)
+  if (request == requestAPI)
     setupDeviceConfig();
 }
 
