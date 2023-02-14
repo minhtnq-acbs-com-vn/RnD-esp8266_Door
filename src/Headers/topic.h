@@ -8,7 +8,7 @@ inline const char *topicDoorACK = "Door/room1/ACK";
 // To device
 inline const char *topicDoorServer = "Door/room1/server";
 
-inline String topic[] = {topicDoorDevice, topicDoorACK, topicDoorServer};
+inline String topic[] = {topicDoorServer, topicDoorACK, topicDoorDevice};
 inline String topicKey[] = {"subscribe", "ack", "publish"};
 
 #endif
