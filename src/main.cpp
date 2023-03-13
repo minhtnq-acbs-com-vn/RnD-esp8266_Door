@@ -25,9 +25,6 @@ void setup()
 
 void loop()
 {
-  int value = digitalRead(pirSensor);
-  Serial.println(value);
-  delay(500);
   if (!client.connected())
   {
     mqttReconnect();

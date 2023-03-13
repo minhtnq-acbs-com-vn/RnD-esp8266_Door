@@ -19,25 +19,17 @@ void publishDoorConfirm()
 
 void responseDoorState()
 {
-  int state = readState(doorSensor);
-  if (state == 1)
-    publishResponse("1");
-  if (state == 0)
-    publishResponse("0");
+  publishResponse("door:" + String(readState(doorSensor)));
   publishDoorConfirm();
-}
-
-void responsePIRState()
-{
-  int state = readState(pirSensor);
-  if (state == 1)
-    publishResponse("1");
-  if (state == 0)
-    publishResponse("0");
-  publishPIRConfirm();
 }
 
 void publishPIRConfirm()
 {
   client.publish(topicDoorACK, devicePIRConfirmed.c_str());
+}
+
+void responsePIRState()
+{
+  publishResponse("pir:" + String(readState(pirSensor)));
+  publishPIRConfirm();
 }
