@@ -36,6 +36,7 @@ String getDeviceInfo()
     HTTPClient http;
     String payload = "";
     http.begin(secureClient, apiQuery);
+    http.addHeader("userid", userID);
 
     int httpCode = http.GET();
     Serial.println(http.errorToString(httpCode));
