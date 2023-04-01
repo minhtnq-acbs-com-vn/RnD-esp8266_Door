@@ -20,6 +20,7 @@ void publishDoorConfirm()
 void responseDoorState()
 {
   publishResponse("door:" + String(readState(doorSensor)));
+  Serial.println(String(readState(doorSensor)));
   publishDoorConfirm();
 }
 
@@ -31,5 +32,6 @@ void publishPIRConfirm()
 void responsePIRState()
 {
   publishResponse("pir:" + String(readState(pirSensor)));
+  Serial.println(String(readState(pirSensor)));
   publishPIRConfirm();
 }

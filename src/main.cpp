@@ -19,7 +19,7 @@ void setup()
   delay(500);
   setupDeviceConfig();
   // Setup pin mode
-  pinMode(doorSensor, INPUT);
+  pinMode(doorSensor, INPUT_PULLUP);
   pinMode(pirSensor, INPUT);
 }
 
