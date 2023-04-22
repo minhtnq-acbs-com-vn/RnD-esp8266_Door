@@ -21,11 +21,17 @@ void callback(char *topic, byte *message, unsigned int length)
 void requestFilter(String request)
 {
   if (request == serverRequestDoor)
+  {
     responseDoorState();
+  }
   if (request == serverRequestPIR)
+  {
     responsePIRState();
+  }
   if (request == requestAPI)
+  {
     setupDeviceConfig();
+  }
 }
 
 void mqttReconnect()
@@ -33,6 +39,7 @@ void mqttReconnect()
   while (!client.connected())
   {
     Serial.println("Attemping MQTT connection...");
+    WiFi.mode(WIFI_STA);
     if (client.connect(mqttClientID, mqttUsername, mqttPassword))
     {
       Serial.println("Connected");
